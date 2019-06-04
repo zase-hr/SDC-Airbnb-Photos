@@ -7,7 +7,9 @@ const listingSchema = mongoose.Schema({
   listingID: { type: Number, unique: true },
   listingDesc: String,
   isSaved: Boolean,
-  listingPhotos: [{ url: String, desc: String, isVerified: Boolean }],
+  listingPhotos: [{
+    id: { type: Number, unique: true }, url: String, desc: String, isVerified: Boolean,
+  }],
 });
 
 // Listing model

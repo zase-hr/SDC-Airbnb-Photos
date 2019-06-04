@@ -59,6 +59,7 @@ Post Request Object:
 &nbsp;&nbsp;{  
 &nbsp;&nbsp;&nbsp;&nbsp;"id" : 2,  
 &nbsp;&nbsp;&nbsp;&nbsp;"photo": {  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": 3,  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"url": "https://images.app.goo.gl/5fCMN61y6zZEH5NUA",  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"desc": "hello my name is Zach pierce",  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"isVerified": true  
@@ -76,8 +77,9 @@ Endpoint: '/updatePhoto'
 
 Update Request Object:   
 &nbsp;&nbsp;{  
-&nbsp;&nbsp;&nbsp;&nbsp;"id" : 2,  
+&nbsp;&nbsp;&nbsp;&nbsp;"id": 2,  
 &nbsp;&nbsp;&nbsp;&nbsp;"photo": {  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": 3,  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"url": "https://images.app.goo.gl/5fCMN61y6zZEH5NUA",  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"desc": "hello my name is Zach pierce",  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"isVerified": true  
@@ -86,14 +88,23 @@ Update Request Object:
 
 Query:  
 1. Use Id to identify which listing.
-2. Search for photo inside of listing and update it. 
+2. Use Photo Id to grab and update a specific photo.
 
 ### Delete Request
 Purpose: To delete a pre-existing photo from a listing
 
 Endpoint: '/deletePhoto'
 
-Delete Request Object
+Delete Request Object:  
+&nbsp;&nbsp;{  
+&nbsp;&nbsp;&nbsp;&nbsp;"id": 2  
+&nbsp;&nbsp;&nbsp;&nbsp;"photo": {  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": 3  
+}
+
+Query:  
+1. Use listing Id to identify which listing.
+2. Use the Photo ID to delete a specific photo.
 ### Installing Dependencies
 
 From within the root directory:
