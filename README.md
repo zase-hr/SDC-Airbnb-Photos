@@ -34,12 +34,12 @@ http://localhost:3001/?id=2
 
 The port number for this app: 3001 
 
-### Get Request 
+# Get Request 
 Purpose: To send a request for all the data needed to run the Module.
 
 Endpoint: '/photos/:listingID'
 
-Response objects return as the following example:     
+## GET Response ( To Client )
 &nbsp;&nbsp;response.data = [ {  
 &nbsp;&nbsp;&nbsp;&nbsp;_id: 5cf6da9baf4cc362df864cca,  
 &nbsp;&nbsp;&nbsp;&nbsp;listingID: 2,  
@@ -49,13 +49,13 @@ Response objects return as the following example:
 &nbsp;&nbsp;__v: 0  
      } ]
 
-### POST Request
+# POST Request
 Purpose: To add a new photo to a listing in the current database
 
 Endpoint: '/add-photos'
 
 
-Post Request Object:   
+## Post Request( From Client )   
 &nbsp;&nbsp;{  
 &nbsp;&nbsp;&nbsp;&nbsp;"id" : 2,  
 &nbsp;&nbsp;&nbsp;&nbsp;"photo": {  
@@ -66,16 +66,15 @@ Post Request Object:
 	}
 }
 
-Query:  
- 1. Use ID to identifiy which listing.
- 2. Add Photo object to the listings photo storage.
+## POST  Response( To Client )
+    Status code: 200
 
-### Update Request
+# Update Request
 Purpose: To update a specific photo inside of a listing in the current database.
 
 Endpoint: '/updatePhoto'
 
-Update Request Object:   
+## Update Request( From Client )
 &nbsp;&nbsp;{  
 &nbsp;&nbsp;&nbsp;&nbsp;"id": 2,  
 &nbsp;&nbsp;&nbsp;&nbsp;"photo": {  
@@ -86,25 +85,23 @@ Update Request Object:
 	}
 }
 
-Query:  
-1. Use Id to identify which listing.
-2. Use Photo Id to grab and update a specific photo.
+## Update Response( To Client )
+    Status Code : 200
 
 ### Delete Request
 Purpose: To delete a pre-existing photo from a listing
 
 Endpoint: '/deletePhoto'
 
-Delete Request Object:  
+## Delete Request Object( From Client )  
 &nbsp;&nbsp;{  
 &nbsp;&nbsp;&nbsp;&nbsp;"id": 2  
 &nbsp;&nbsp;&nbsp;&nbsp;"photo": {  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": 3  
 }
 
-Query:  
-1. Use listing Id to identify which listing.
-2. Use the Photo ID to delete a specific photo.
+## Delete Response ( To Client )
+      Status Code : 200
 ### Installing Dependencies
 
 From within the root directory:
