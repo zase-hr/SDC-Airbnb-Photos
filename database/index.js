@@ -24,7 +24,21 @@ const getPhotos = (targetID, callback) => {
   });
 };
 
+// =========== POST photos to the database ==========
+const addPhoto = (photo, id, callback) => {
+  Listing.updateOne(
+    { listingID: id },
+    { $push: { listingPhotos: photo } }, (err, results) => {
+      if (err) {
+        callback(err, '');
+      } else {
+        callback(null, results);
+      }
+    },
+  );
+};
 module.exports = {
   Listing,
   getPhotos,
+  addPhoto,
 };
