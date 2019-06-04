@@ -11,20 +11,20 @@ const generateListingPhotos = () => {
   const usedPhotos = [];
 
   // Generate 5-15 photos per listing.
-  const numberOfPhotos = getRandomInt(5, 16);
+  const numberOfPhotos = 15;
 
   // Add an arbitrary # of photo objects to an array.
-  for (let i = 0; i < numberOfPhotos; i += 1) {
-    const randomPhoto = getRandomInt(1, 66);
+  for (let i = 0; i <= numberOfPhotos; i += 1) {
+    const currentPhoto = faker.image.image(720, 480, 'cats');
     // If the randomPhoto has not been used yet, create the photo object with that index.
-    if (!usedPhotos.includes(randomPhoto)) {
+    if (photosArray.length !== numberOfPhotos) {
       const photoObj = {
-        url: `https://s3-us-west-1.amazonaws.com/hackerhomephotos/photos/${randomPhoto}.jpg`,
+        url: currentPhoto,
         desc: faker.lorem.sentence(),
         isVerified: faker.random.boolean(),
       };
       photosArray.push(photoObj);
-      usedPhotos.push(randomPhoto);
+      usedPhotos.push(currentPhoto);
     }
   }
   return photosArray;
