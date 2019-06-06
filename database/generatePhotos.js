@@ -25,6 +25,7 @@ const generateListingPhotos = () => {
         desc: faker.lorem.sentence(),
         isVerified: faker.random.boolean(),
       };
+      console.log(photoObj);
       photosArray.push(photoObj);
       usedPhotos.push(currentPhoto);
       counter += 1;
