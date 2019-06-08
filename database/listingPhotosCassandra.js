@@ -17,25 +17,17 @@ for (let j = 0; j < 15; j += 1) {
 
 const cassandraListingPhotos = () => {
   const photosArray = [];
-  const usedPhotos = [];
 
   // Generate 5-15 photos per listing.
-  const numberOfPhotos = getRandomInt(5, 8);
+  const numberOfPhotos = 4;
   let counter = 0;
 
   // Add an arbitrary # of photo objects to an array.
   for (let i = 0; i <= numberOfPhotos; i += 1) {
-    const currentPhoto = faker.image.image(720, 480, 'cats');
     // If the randomPhoto has not been used yet, create the photo object with that index.
     if (photosArray.length !== numberOfPhotos) {
-      const photoObj = {
-        id: counter,
-        url: photoUrls[Math.floor(Math.random() * photoUrls.length)],
-        desc: sentences[Math.floor(Math.random() * sentences.length)],
-        isVerified: verified[Math.floor(Math.random() * verified.length)],
-      };
+      const photoObj = `{ id: ${counter}, url: '${photoUrls[Math.floor(Math.random() * photoUrls.length)]}', description: '${sentences[Math.floor(Math.random() * sentences.length)]}', isverified: ${verified[Math.floor(Math.random() * verified.length)]}}`;
       photosArray.push(photoObj);
-      usedPhotos.push(currentPhoto);
       counter += 1;
     }
   }
