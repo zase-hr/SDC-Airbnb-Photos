@@ -4,12 +4,6 @@ const generateListingPhotos = require('./listingPhotosCassandra');
 // ================= FS Writable Stream Attempt =========
 const wStream = fs.createWriteStream('./cassandra.csv');
 
-const getRandomInt = (min, max) => {
-  const minimum = Math.ceil(min);
-  const maximum = Math.floor(max);
-  return Math.floor(Math.random() * (maximum - minimum)) + minimum;
-};
-
 let listingCount = 1;
 let userId = 1;
 const start = new Date().getTime();
