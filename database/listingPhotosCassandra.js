@@ -7,19 +7,18 @@ const getRandomInt = (min, max) => {
 };
 
 const sentences = [];
-const photoUrls = [];
+const photoUrls = ['https://sdc-photos.s3-us-west-1.amazonaws.com/1.jpeg', 'https://sdc-photos.s3-us-west-1.amazonaws.com/2.jpg', 'https://sdc-photos.s3-us-west-1.amazonaws.com/3.jpg', 'https://sdc-photos.s3-us-west-1.amazonaws.com/4.jpg', 'https://sdc-photos.s3-us-west-1.amazonaws.com/5.jpg', 'https://sdc-photos.s3-us-west-1.amazonaws.com/6.jpg', 'https://sdc-photos.s3-us-west-1.amazonaws.com/7.jpg', 'https://sdc-photos.s3-us-west-1.amazonaws.com/8.jpg'];
 const verified = [true, false];
 
 for (let j = 0; j < 15; j += 1) {
   sentences.push(faker.lorem.sentence());
-  photoUrls.push(faker.image.image(720, 480, 'cats'));
 }
 
 const cassandraListingPhotos = () => {
   const photosArray = [];
 
   // Generate 5-15 photos per listing.
-  const numberOfPhotos = 4;
+  const numberOfPhotos = 7;
   let counter = 0;
 
   // Add an arbitrary # of photo objects to an array.

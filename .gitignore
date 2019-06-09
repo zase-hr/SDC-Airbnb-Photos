@@ -8,6 +8,10 @@ node_modules/
 /database/cassandra.csv
 /database/test.csv
 /database/postgresUsers.csv
+/database/postgresListings.csv
+/database/postgresLocations.csv
+/database/postgresPhotos.csv
+
 pids
 *.pid
 logs

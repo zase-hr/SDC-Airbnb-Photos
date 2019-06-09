@@ -1,24 +1,24 @@
 const fs = require('fs');
 const faker = require('faker');
 
-const wStream = fs.createWriteStream('./postgresUsers.csv');
+const wStream = fs.createWriteStream('./postgresLocations.csv');
 
-let userId = 1;
-const users = [];
+let id = 0;
+const locations = [];
 const start = new Date().getTime();
-const n = 20000000;
+const n = 100000;
 
 for (let i = 0; i <= 500; i += 1) {
-  users.push(faker.name.findName());
+  locations.push(faker.address.city());
 }
 for (let j = 0; j <= n; j += 1) {
-  const header = 'id, username';
-  const values = `${userId},${users[Math.floor(Math.random() * users.length)]}`;
-  userId += 1;
+  const header = 'id, location';
+  const values = `${id},${locations[Math.floor(Math.random() * locations.length)]}`;
+  id += 1;
   if (j === 0) {
     wStream.write(`${header}\n`, (err) => {
       if (err) console.log(err);
-      if (j % 20000000) {
+      if (j % 100000) {
         const end = new Date().getTime();
         const total = end - start;
         console.log(total);
@@ -27,7 +27,7 @@ for (let j = 0; j <= n; j += 1) {
   } else {
     wStream.write(`${values}\n`, (err) => {
       if (err) console.log(err);
-      if (j % 20000000) {
+      if (j % 100000) {
         const end = new Date().getTime();
         const total = end - start;
         console.log(total);
