@@ -8,13 +8,13 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (maximum - minimum)) + minimum;
 };
 
-let listingCount = 1;
+let listingCount = 0;
 const start = new Date().getTime();
 const sentences = [];
 const boolean = [true, false];
 const locations = [];
 const names = [];
-const n = 10000000;
+const n = 1;
 
 for (let j = 0; j < 100; j += 1) {
   const sentence = faker.lorem.sentences(3, 3);
@@ -24,36 +24,37 @@ for (let j = 0; j < 100; j += 1) {
   locations.push(listingLocation);
   names.push(name);
 }
+async function writingEverything() {
+  for (let i = 0; i <= n; i += 1) {
+    const photo = {
+      id: listingCount,
+      description: sentences[Math.floor(Math.random() * sentences.length)],
+      is_saved: boolean[Math.floor(Math.random() * boolean.length)],
+      location: getRandomInt(1, 100000),
+      user_id: getRandomInt(1, 20000000),
+    };
 
-for (let i = 0; i <= n; i += 1) {
-  const photo = {
-    id: listingCount,
-    description: sentences[Math.floor(Math.random() * sentences.length)],
-    is_saved: boolean[Math.floor(Math.random() * boolean.length)],
-    location: getRandomInt(1, 100000),
-    user_id: getRandomInt(1, 20000000),
-  };
-
-  const values = `${photo.id},${photo.description},${photo.user_id},${photo.is_saved},${photo.location}`;
-  const header = 'id,description,host_id,is_saved,location';
-  listingCount += 1;
-  if (i === 0) {
-    wStream.write(`${header}\n`, (err) => {
-      if (err) throw err;
-      if (i % 10) {
-        const end = new Date().getTime();
-        const total = end - start;
-        console.log('Data Written in ', total);
+    const values = `${photo.id},${photo.description},${photo.user_id},${photo.is_saved},${photo.location}`;
+    const header = 'id,description,host_id,is_saved,location';
+    listingCount += 1;
+    if (i === 0) {
+      wStream.write(`${header}\n`, (err) => {
+        if (err) throw err;
+        if (i % 1000000 === 0) {
+          console.log(i);
+        }
+      });
+    } else {
+      const writingS = wStream.write(`${values}\n`);
+      if (!writingS) {
+        await new Promise((resolve) => {
+          wStream.once('drain', resolve);
+        });
       }
-    });
-  } else {
-    wStream.write(`${values}\n`, (err) => {
-      if (err) throw err;
-      if (i % 10) {
-        const end = new Date().getTime();
-        const total = end - start;
-        console.log('Data Written in ', total);
+      if (i % 1000000 === 0) {
+        console.log(i);
       }
-    });
+    }
   }
 }
+writingEverything();

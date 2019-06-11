@@ -12,8 +12,8 @@ const locations = [];
 const names = [];
 const n = 10000000;
 const photosList = generateListingPhotos();
-async function writingData() {
 
+async function writingData() {
   for (let j = 0; j < 10; j += 1) {
     const sentence = faker.lorem.sentences(3, 3);
     const listingLocation = faker.address.city();
@@ -22,7 +22,7 @@ async function writingData() {
     locations.push(listingLocation);
     names.push(name);
   }
-  
+
   for (let i = 0; i <= n; i += 1) {
     const photo = {
       id: listingCount,
@@ -33,7 +33,7 @@ async function writingData() {
       username: names[Math.floor(Math.random() * names.length)],
       photos: `"[${photosList}]"`,
     };
-    
+
     const values = `${photo.id},${photo.description},${photo.is_saved},${photo.location},${photo.photos},${photo.user_id},${photo.username}`;
     const test = 'listing_id,description,is_saved,location,photos,user_id,username';
     const otherTest = values;

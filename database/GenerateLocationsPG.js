@@ -18,19 +18,15 @@ for (let j = 0; j <= n; j += 1) {
   if (j === 0) {
     wStream.write(`${header}\n`, (err) => {
       if (err) console.log(err);
-      if (j % 100000) {
-        const end = new Date().getTime();
-        const total = end - start;
-        console.log(total);
+      if (j % 100000 === 0) {
+        console.log(j);
       }
     });
   } else {
     wStream.write(`${values}\n`, (err) => {
       if (err) console.log(err);
-      if (j % 100000) {
-        const end = new Date().getTime();
-        const total = end - start;
-        console.log(total);
+      if (j % 100000 === 0) {
+        console.log(j);
       }
     });
   }

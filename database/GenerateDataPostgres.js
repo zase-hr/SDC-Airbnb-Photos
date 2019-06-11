@@ -5,7 +5,6 @@ const wStream = fs.createWriteStream('./postgresUsers.csv');
 
 let userId = 1;
 const users = [];
-const start = new Date().getTime();
 const n = 20000000;
 
 for (let i = 0; i <= 500; i += 1) {
@@ -18,19 +17,15 @@ for (let j = 0; j <= n; j += 1) {
   if (j === 0) {
     wStream.write(`${header}\n`, (err) => {
       if (err) console.log(err);
-      if (j % 20000000) {
-        const end = new Date().getTime();
-        const total = end - start;
-        console.log(total);
+      if (j % 20000000 === 0) {
+        console.log(j);
       }
     });
   } else {
     wStream.write(`${values}\n`, (err) => {
       if (err) console.log(err);
-      if (j % 20000000) {
-        const end = new Date().getTime();
-        const total = end - start;
-        console.log(total);
+      if (j % 20000000 === 0) {
+        console.log(j);
       }
     });
   }
