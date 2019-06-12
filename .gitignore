@@ -5,12 +5,12 @@
 npm
 npm-debug.log
 node_modules/
-/database/cassandra.csv
+/database/Cassandra/cassandra.csv
 /database/test.csv
-/database/postgresUsers.csv
-/database/postgresListings.csv
-/database/postgresLocations.csv
-/database/postgresPhotos.csv
+database/Postgres/postgresUsers.csv
+/database/Postgres/postgresLocations.csv
+/database/Postgres/postgresPhotos.csv
+/database/Postgres/postgresListings.csv
 
 pids
 *.pid
