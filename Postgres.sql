@@ -14,15 +14,15 @@ CREATE TABLE listings (
   host_id INTEGER NOT NULL,
   is_saved BOOLEAN NOT NULL,
   location INTEGER NOT NULL,
+)
   FOREIGN KEY ( host_id ) REFERENCES users ( id ),
   FOREIGN KEY ( location ) REFERENCES locations ( id ),
-)
 
 CREATE TABLE photos (
   id INTEGER PRIMARY KEY NOT NULL,
   url VARCHAR(100), 
   description VARCHAR(500),
   is_verified BOOLEAN,
-  listing INTEGER NOT NULL,
-  FOREIGN KEY(listing) REFERENCES listings(id)
+  listing INTEGER NOT NULL
   );
+  FOREIGN KEY(listing) REFERENCES listings(id)

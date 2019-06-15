@@ -9,12 +9,11 @@ const getRandomInt = (min, max) => {
 };
 
 let listingCount = 0;
-const start = new Date().getTime();
 const sentences = [];
 const boolean = [true, false];
 const locations = [];
 const names = [];
-const n = 1;
+const n = 10000000;
 
 for (let j = 0; j < 100; j += 1) {
   const sentence = faker.lorem.sentences(3, 3);

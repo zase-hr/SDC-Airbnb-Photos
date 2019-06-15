@@ -11,7 +11,7 @@ database/Postgres/postgresUsers.csv
 /database/Postgres/postgresLocations.csv
 /database/Postgres/postgresPhotos.csv
 /database/Postgres/postgresListings.csv
-
+./newrelic.js
 pids
 *.pid
 logs
