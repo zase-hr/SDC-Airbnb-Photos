@@ -3,7 +3,7 @@ config:
   processor: './my-functions.js'
   phases:
     - duration: 20
-      arrivalRate: 2000
+      arrivalRate: 1000
 scenarios:
   - weight: 10/100
     flow:
@@ -28,7 +28,7 @@ scenarios:
     flow:
       - loop:
         - get:
-            url: '/photos/{{ $randomNumber(1,10000000) }}'
+            url: '/photos/{{ $randomNumber(1,100) }}'
         - get:
             url: '/photoListing/{{ $randomNumber(1,10000000) }}'
         count: 10

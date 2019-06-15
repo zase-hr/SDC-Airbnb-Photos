@@ -1,4 +1,6 @@
 const { Pool, Client } = require('pg');
+// const redis = require('redis');
+// const client = redis.createClient();
 
 const pool = new Pool({
   user: 'zacharypierce',
@@ -9,21 +11,25 @@ const pool = new Pool({
 });
 
 // ========== GET ===========
-const getPhotos = (targetId, res) => {
+const getPhotos = (targetId, req, res) => {
+  // const isbn = req.params.listingID;
   pool.query(`SELECT * FROM photos WHERE listing=${targetId}`, (err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {
+      // client.setex(isbn, 3600, JSON.stringify(data));
       res.status(200).send(data);
     }
   });
 };
-const getListingInfo = (targetId, res) => {
+const getListingInfo = (targetId, req, res) => {
+  // const isbn = req.params.listingID;
   pool.query(`SELECT * FROM listings WHERE id=${targetId}`, (err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {
       res.status(200).send(data);
+      // client.setex(`${isbn}listing`, 3600, JSON.stringify(data));
     }
   });
 };
