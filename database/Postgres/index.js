@@ -3,13 +3,15 @@ const { Pool, Client } = require('pg');
 // const client = redis.createClient();
 
 const pool = new Pool({
-  user: 'zacharypierce',
-  host: 'localhost',
+  user: 'postgres',
+  host: 'ec2-18-222-208-67.us-east-2.compute.amazonaws.com',
   database: 'photos',
-  password: '',
+  password: 'Lacrosseis1!',
   port: 5432,
 });
-
+pool.connect()
+  .then(() => console.log('CONNECTED'))
+  .catch(err => console.log(err));
 // ========== GET ===========
 const getPhotos = (targetId, req, res) => {
   // const isbn = req.params.listingID;
