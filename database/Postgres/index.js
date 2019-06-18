@@ -15,6 +15,7 @@ pool.connect()
 // ========== GET ===========
 const getPhotos = (targetId, req, res) => {
   // const isbn = req.params.listingID;
+  console.log('THIS IS WORKING');
   pool.query(`SELECT * FROM photos WHERE listing=${targetId}`, (err, data) => {
     if (err) {
       res.status(500).send(err);
