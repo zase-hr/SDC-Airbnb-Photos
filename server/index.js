@@ -1,6 +1,7 @@
 const newRelic = require('newrelic');
 const express = require('express');
 const cors = require('cors');
+const Path = require('path')
 // const redis = require('redis');
 
 // const client = redis.createClient();
@@ -13,7 +14,7 @@ const app = express();
 
 const PORT = 3001;
 
-app.use(express.static('public/dist/'));
+app.use(express.static(Path.resolve(__dirname, 'public/dist/')));
 
 app.use(cors());
 app.use(bodyParser.json());
