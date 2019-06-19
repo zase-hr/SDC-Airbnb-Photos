@@ -14,7 +14,7 @@ const app = express();
 
 const PORT = 3001;
 
-app.use(express.static(Path.resolve(__dirname, '../public/dist/')));
+app.use(express.static(Path.resolve(__dirname, 'public/dist/')));
 
 app.use(cors());
 app.use(bodyParser.json());
